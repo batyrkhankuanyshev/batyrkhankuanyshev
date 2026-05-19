@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Batyrkhan Kuanyshev — Finance Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Finance Portfolio of Kuanyshev Batyrkhan — CFA Candidate, BBA Finance at CityU Hong Kong"/>
+<meta property="og:title" content="Portfolio of Kuanyshev Batyrkhan"/>
+<meta property="og:type" content="website"/>
+<title>Portfolio — Kuanyshev Batyrkhan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #f8f6f1;
-    --surface: #ffffff;
-    --ink: #1a1714;
-    --ink-muted: #6b6560;
-    --ink-light: #a09890;
-    --accent: #c8932a;
-    --accent-light: #f0e4c8;
-    --border: rgba(26,23,20,0.10);
-    --border-strong: rgba(26,23,20,0.18);
-    --serif: 'Playfair Display', Georgia, serif;
+    --gold: #C9A84C;
+    --gold-light: #F0D98E;
+    --gold-dim: #8a6e2f;
+    --ink: #1a1814;
+    --ink2: #3d3a34;
+    --ink3: #6b6760;
+    --paper: #faf8f4;
+    --paper2: #f2ede4;
+    --paper3: #e8e1d4;
+    --rule: rgba(201,168,76,0.25);
+    --serif: 'DM Serif Display', Georgia, serif;
     --sans: 'DM Sans', system-ui, sans-serif;
   }
 
@@ -28,701 +32,646 @@
 
   body {
     font-family: var(--sans);
-    background: var(--bg);
+    background: var(--paper);
     color: var(--ink);
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.7;
-    font-weight: 300;
   }
 
-  /* NAV */
+  /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 3rem;
-    background: rgba(248,246,241,0.92);
+    background: rgba(250,248,244,0.92);
     backdrop-filter: blur(12px);
-    border-bottom: 0.5px solid var(--border);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 58px;
   }
-  .nav-logo {
+  .nav-brand {
     font-family: var(--serif);
-    font-size: 1.1rem;
-    letter-spacing: 0.02em;
+    font-size: 1.05rem;
     color: var(--ink);
     text-decoration: none;
+    letter-spacing: 0.02em;
   }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
-    text-decoration: none;
-    color: var(--ink-muted);
-    font-size: 0.85rem;
+    font-size: 0.82rem;
+    font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    font-weight: 400;
+    color: var(--ink3);
+    text-decoration: none;
     transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover { color: var(--gold); }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 0 3rem;
-    gap: 4rem;
-    max-width: 1200px;
+  /* ── HERO / SIDEBAR LAYOUT ── */
+  .shell {
+    max-width: 1080px;
     margin: 0 auto;
-    padding-top: 5rem;
+    padding: 0 2rem;
   }
-  .hero-text {}
-  .hero-label {
-    font-size: 0.78rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 500;
+
+  .layout {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    gap: 0;
+    padding-top: 58px;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR ── */
+  aside {
+    position: sticky;
+    top: 58px;
+    height: calc(100vh - 58px);
+    overflow-y: auto;
+    padding: 3rem 2rem 2rem 0;
+    border-right: 1px solid var(--rule);
+  }
+
+  .avatar-ring {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    padding: 3px;
     margin-bottom: 1.2rem;
   }
-  .hero-name {
-    font-family: var(--serif);
-    font-size: clamp(3rem, 5vw, 4.8rem);
-    line-height: 1.08;
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-  }
-  .hero-name em { font-style: italic; color: var(--accent); }
-  .hero-subtitle {
-    font-size: 1rem;
-    color: var(--ink-muted);
-    margin-bottom: 2rem;
-    max-width: 420px;
-    font-weight: 300;
-  }
-  .hero-stats {
-    display: flex; gap: 2.5rem;
-    margin-bottom: 2.5rem;
-    border-top: 0.5px solid var(--border);
-    padding-top: 1.5rem;
-  }
-  .stat-item {}
-  .stat-num {
-    font-family: var(--serif);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--ink);
-    line-height: 1;
-  }
-  .stat-label { font-size: 0.78rem; color: var(--ink-light); text-transform: uppercase; letter-spacing: 0.08em; }
-  .hero-cta { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-  .btn-primary {
-    display: inline-block;
-    background: var(--ink);
-    color: var(--bg);
-    padding: 0.75rem 1.8rem;
-    text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.06em;
-    font-weight: 400;
-    transition: background 0.2s;
-    border-radius: 2px;
-  }
-  .btn-primary:hover { background: #3a3530; }
-  .btn-secondary {
-    display: inline-block;
-    color: var(--ink);
-    padding: 0.75rem 1.8rem;
-    text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.06em;
-    border: 0.5px solid var(--border-strong);
-    transition: border-color 0.2s;
-    border-radius: 2px;
-  }
-  .btn-secondary:hover { border-color: var(--ink); }
-
-  .hero-card {
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: 12px;
-    padding: 2.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-card::before {
-    content: '';
-    position: absolute; top: 0; right: 0;
-    width: 200px; height: 200px;
-    background: var(--accent-light);
+  .avatar-inner {
+    width: 100%; height: 100%;
     border-radius: 50%;
-    transform: translate(60px, -80px);
-    opacity: 0.5;
-  }
-  .hero-card-label {
-    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--ink-light); margin-bottom: 1.5rem;
-  }
-  .card-item {
-    display: flex; align-items: flex-start; gap: 1rem;
-    padding: 1rem 0;
-    border-bottom: 0.5px solid var(--border);
-  }
-  .card-item:last-child { border-bottom: none; }
-  .card-icon {
-    width: 36px; height: 36px; border-radius: 8px;
-    background: var(--accent-light);
+    background: linear-gradient(135deg, var(--paper2), var(--paper3));
     display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    font-size: 1rem;
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.02em;
   }
-  .card-item-title { font-size: 0.88rem; font-weight: 500; color: var(--ink); }
-  .card-item-sub { font-size: 0.78rem; color: var(--ink-muted); }
 
-  /* SECTIONS */
-  section { padding: 5rem 3rem; max-width: 1200px; margin: 0 auto; }
-  .section-header { margin-bottom: 3rem; }
-  .section-num {
-    font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 0.5rem; font-weight: 500;
+  .sidebar-name {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    line-height: 1.3;
+    margin-bottom: 0.25rem;
+    color: var(--ink);
+  }
+  .sidebar-tagline {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 1.4rem;
+  }
+
+  .sidebar-meta { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.6rem; }
+  .sidebar-meta li { font-size: 0.83rem; color: var(--ink3); display: flex; align-items: flex-start; gap: 0.5rem; }
+  .sidebar-meta li svg { flex-shrink: 0; margin-top: 3px; }
+
+  .sidebar-links { display: flex; flex-direction: column; gap: 0.45rem; }
+  .sidebar-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--gold-dim);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.4rem;
+    transition: color 0.2s;
+  }
+  .sidebar-links a:hover { color: var(--gold); }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--gold);
+    color: var(--gold-dim);
+    margin-top: 1.2rem;
+  }
+
+  /* ── MAIN ── */
+  main {
+    padding: 3rem 0 4rem 3rem;
+  }
+
+  /* section heading */
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 0.3rem;
   }
   .section-title {
     font-family: var(--serif);
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    font-weight: 700;
-    line-height: 1.15;
-  }
-  .section-title em { font-style: italic; }
-  .divider { height: 0.5px; background: var(--border); max-width: 1200px; margin: 0 3rem; }
-
-  /* ABOUT */
-  .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 5rem; align-items: start; }
-  .about-bio { font-size: 1.08rem; line-height: 1.8; color: var(--ink-muted); }
-  .about-bio p { margin-bottom: 1.2rem; }
-  .about-bio strong { color: var(--ink); font-weight: 500; }
-  .awards-list { display: flex; flex-direction: column; gap: 1rem; }
-  .award-item {
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: 8px;
-    padding: 1rem 1.2rem;
-    border-left: 3px solid var(--accent);
-  }
-  .award-title { font-size: 0.85rem; font-weight: 500; color: var(--ink); }
-  .award-detail { font-size: 0.78rem; color: var(--ink-muted); margin-top: 0.2rem; }
-
-  /* EXPERIENCE */
-  .exp-list { display: flex; flex-direction: column; gap: 0; }
-  .exp-item {
-    display: grid; grid-template-columns: 200px 1fr;
-    gap: 2rem;
-    padding: 2.5rem 0;
-    border-bottom: 0.5px solid var(--border);
-  }
-  .exp-item:first-child { border-top: 0.5px solid var(--border); }
-  .exp-meta {}
-  .exp-company { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-light); }
-  .exp-period { font-size: 0.8rem; color: var(--ink-light); margin-top: 0.3rem; }
-  .exp-role { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; margin-bottom: 0.8rem; }
-  .exp-role em { font-style: italic; color: var(--accent); }
-  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-  .exp-bullets li {
-    font-size: 0.9rem; color: var(--ink-muted); padding-left: 1rem; position: relative;
-  }
-  .exp-bullets li::before {
-    content: '→'; position: absolute; left: 0;
-    color: var(--accent); font-size: 0.78rem;
-  }
-  .exp-tag {
-    display: inline-block; margin-top: 1rem; margin-right: 0.4rem;
-    padding: 0.2rem 0.6rem; background: var(--accent-light);
-    border-radius: 3px; font-size: 0.72rem; letter-spacing: 0.04em;
-    color: #7a5a15; font-weight: 500;
+    font-size: 1.6rem;
+    color: var(--ink);
+    margin-bottom: 1.8rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--rule);
   }
 
-  /* PORTFOLIO */
-  .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-  .portfolio-card {
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: 12px;
-    padding: 2rem;
+  section { margin-bottom: 3.5rem; }
+
+  /* ── EXPERIENCE TIMELINE ── */
+  .timeline { display: flex; flex-direction: column; gap: 1.6rem; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0 1.2rem;
+  }
+  .tl-date {
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--ink3);
+    text-align: right;
+    padding-top: 3px;
+    line-height: 1.4;
+  }
+  .tl-body {
+    border-left: 2px solid var(--rule);
+    padding-left: 1.2rem;
     position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s;
-    cursor: pointer;
+  }
+  .tl-body::before {
+    content: '';
+    position: absolute;
+    left: -5px; top: 7px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .tl-org {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 0.15rem;
+  }
+  .tl-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
+  .tl-bullets li {
+    font-size: 0.86rem;
+    color: var(--ink2);
+    padding-left: 1.1rem;
+    position: relative;
+  }
+  .tl-bullets li::before {
+    content: '—';
+    position: absolute; left: 0;
+    color: var(--gold);
+    font-size: 0.8rem;
+  }
+
+  /* ── PROJECT CARDS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+  }
+  .project-card {
+    background: var(--paper2);
+    border: 1px solid var(--paper3);
+    border-radius: 8px;
+    padding: 1.4rem 1.4rem 1.2rem;
     text-decoration: none;
     color: inherit;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
   }
-  .portfolio-card:hover { border-color: var(--border-strong); }
-  .portfolio-card:hover .card-arrow { transform: translate(3px, -3px); }
-  .card-tag {
-    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--accent); font-weight: 500; margin-bottom: 1rem;
-    display: flex; align-items: center; gap: 0.5rem;
+  .project-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
   }
-  .tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-  .card-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.6rem; line-height: 1.3; }
-  .card-desc { font-size: 0.85rem; color: var(--ink-muted); line-height: 1.6; }
-  .card-arrow {
-    position: absolute; top: 1.5rem; right: 1.5rem;
-    font-size: 1rem; color: var(--ink-light);
-    transition: transform 0.2s;
+  .project-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
   }
-  .card-footer {
-    margin-top: 1.5rem; padding-top: 1rem;
-    border-top: 0.5px solid var(--border);
-    font-size: 0.75rem; color: var(--ink-light);
-    display: flex; align-items: center; gap: 1rem;
+  .project-name {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--ink);
+    line-height: 1.35;
   }
-  .placeholder-badge {
-    display: inline-block; padding: 0.2rem 0.7rem;
-    background: #f0f0ec; border-radius: 3px;
-    font-size: 0.72rem; color: var(--ink-light); letter-spacing: 0.04em;
+  .project-desc {
+    font-size: 0.84rem;
+    color: var(--ink3);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .project-stat {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+  }
+  .stat-pill {
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 2px 9px;
+    border-radius: 20px;
+    background: var(--paper3);
+    color: var(--ink2);
   }
 
-  /* SKILLS */
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-  .skill-block {
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: 10px;
-    padding: 1.5rem;
-  }
-  .skill-block-title {
-    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--ink-light); margin-bottom: 1rem; font-weight: 500;
+  /* ── SKILLS ── */
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .skill-group { }
+  .skill-group-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 0.5rem;
   }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .skill-tag {
-    display: inline-block; padding: 0.3rem 0.7rem;
-    border: 0.5px solid var(--border-strong); border-radius: 4px;
-    font-size: 0.8rem; color: var(--ink);
+    font-size: 0.8rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--paper2);
+    border: 1px solid var(--paper3);
+    color: var(--ink2);
   }
 
-  /* CONTACT */
-  .contact-wrap {
-    background: var(--ink);
-    border-radius: 16px;
-    padding: 4rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+  /* ── AWARDS ── */
+  .awards-list { display: flex; flex-direction: column; gap: 1rem; }
+  .award-row {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--rule);
   }
-  .contact-heading {
-    font-family: var(--serif);
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: var(--bg);
-    line-height: 1.2;
-    margin-bottom: 1rem;
+  .award-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .award-icon {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--paper2);
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    color: var(--gold-dim);
   }
-  .contact-heading em { font-style: italic; color: var(--accent); }
-  .contact-sub { font-size: 0.9rem; color: rgba(248,246,241,0.6); font-weight: 300; }
-  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
-  .contact-link {
-    display: flex; align-items: center; gap: 1rem;
-    text-decoration: none; color: var(--bg);
-    padding: 1rem 1.2rem;
-    border: 0.5px solid rgba(248,246,241,0.15);
-    border-radius: 8px;
-    font-size: 0.9rem;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .contact-link:hover { border-color: rgba(248,246,241,0.4); background: rgba(248,246,241,0.05); }
-  .contact-link-icon { font-size: 1rem; opacity: 0.6; width: 20px; text-align: center; }
-  .contact-link-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(248,246,241,0.5); }
-  .contact-link-val { font-size: 0.88rem; }
+  .award-title { font-weight: 500; font-size: 0.9rem; color: var(--ink); }
+  .award-sub { font-size: 0.8rem; color: var(--ink3); }
 
-  /* FOOTER */
+  /* ── FOOTER ── */
   footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.8rem 2rem;
     text-align: center;
-    padding: 2rem;
     font-size: 0.78rem;
-    color: var(--ink-light);
-    border-top: 0.5px solid var(--border);
-    margin-top: 2rem;
+    color: var(--ink3);
+  }
+  footer a { color: var(--gold-dim); text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    .layout { grid-template-columns: 1fr; }
+    aside {
+      position: static; height: auto;
+      border-right: none; border-bottom: 1px solid var(--rule);
+      padding: 2.5rem 1rem 2rem;
+      display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start;
+    }
+    main { padding: 2rem 0; }
+    nav { padding: 0 1.2rem; }
+    .shell { padding: 0 1.2rem; }
+    .skills-grid { grid-template-columns: 1fr; }
   }
 
-  /* ANIMATIONS */
+  /* ── ANIMATE ── */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
-  .hero-text > * { animation: fadeUp 0.7s ease both; }
-  .hero-label { animation-delay: 0.05s; }
-  .hero-name { animation-delay: 0.15s; }
-  .hero-subtitle { animation-delay: 0.25s; }
-  .hero-stats { animation-delay: 0.35s; }
-  .hero-cta { animation-delay: 0.45s; }
-  .hero-card { animation: fadeUp 0.8s 0.3s ease both; }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { gap: 1.2rem; }
-    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 2rem; min-height: auto; }
-    section { padding: 3rem 1.5rem; }
-    .divider { margin: 0 1.5rem; }
-    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
-    .contact-wrap { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem; }
+  .tl-item, .project-card, .award-row, .skill-group {
+    animation: fadeUp 0.5s ease both;
   }
+  .tl-item:nth-child(1) { animation-delay: 0.05s }
+  .tl-item:nth-child(2) { animation-delay: 0.12s }
+  .tl-item:nth-child(3) { animation-delay: 0.19s }
+  .tl-item:nth-child(4) { animation-delay: 0.26s }
+  .project-card:nth-child(1) { animation-delay: 0.07s }
+  .project-card:nth-child(2) { animation-delay: 0.14s }
+  .project-card:nth-child(3) { animation-delay: 0.21s }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">BK</a>
+  <a class="nav-brand" href="#">Kuanyshev Batyrkhan</a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="Kuanyshev_Batyrkhan_Resume_v2.docx">Resume ↗</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<div style="max-width:1200px; margin:0 auto;">
-<div class="hero">
-  <div class="hero-text">
-    <p class="hero-label">Finance Student · Hong Kong</p>
-    <h1 class="hero-name">Batyrkhan<br><em>Kuanyshev</em></h1>
-    <p class="hero-subtitle">BBA Finance at City University of Hong Kong — researcher, entrepreneur, and aspiring finance professional with hands-on experience at Chevron.</p>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num">3.7</div>
-        <div class="stat-label">GPA / 4.0</div>
+<div class="shell">
+  <div class="layout">
+
+    <!-- ── SIDEBAR ── -->
+    <aside>
+      <div class="avatar-ring">
+        <div class="avatar-inner">KB</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-num">55%</div>
-        <div class="stat-label">Portfolio ROI</div>
+
+      <h1 class="sidebar-name">Kuanyshev<br>Batyrkhan</h1>
+      <p class="sidebar-tagline">Finance &amp; Investment</p>
+
+      <ul class="sidebar-meta">
+        <li>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Hong Kong &amp; Atyrau, KZ
+        </li>
+        <li>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+          batyrkuanyshev@gmail.com
+        </li>
+        <li>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+          +7 701 281 87 00
+        </li>
+        <li>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          City University of Hong Kong
+        </li>
+      </ul>
+
+      <div class="sidebar-links">
+        <a href="https://linkedin.com/in/batyrkhan-kuanyshev" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:batyrkuanyshev@gmail.com">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+          Email me
+        </a>
+        <a href="Kuanyshev_Batyrkhan_Resume_v2.docx">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Download CV
+        </a>
       </div>
-      <div class="stat-item">
-        <div class="stat-num">850+</div>
-        <div class="stat-label">Report Subscribers</div>
-      </div>
-    </div>
-    <div class="hero-cta">
-      <a href="#portfolio" class="btn-primary">View Portfolio</a>
-      <a href="202709.pdf" class="btn-secondary" download>Download CV</a>
-    </div>
-  </div>
-  <div class="hero-card">
-    <p class="hero-card-label">Current & Recent</p>
-    <div class="card-item">
-      <div class="card-icon">🏦</div>
-      <div>
-        <div class="card-item-title">Accounting Intern — Chevron</div>
-        <div class="card-item-sub">Power BI · SAP · $2B+ business unit</div>
-      </div>
-    </div>
-    <div class="card-item">
-      <div class="card-icon">📊</div>
-      <div>
-        <div class="card-item-title">Founder — CityU Investment Club</div>
-        <div class="card-item-sub">40+ members · biweekly macro reports</div>
-      </div>
-    </div>
-    <div class="card-item">
-      <div class="card-icon">🔬</div>
-      <div>
-        <div class="card-item-title">Research Scholar — Pioneer Academics</div>
-        <div class="card-item-sub">Claremont McKenna College · Prof. W. Lincoln</div>
-      </div>
-    </div>
-    <div class="card-item">
-      <div class="card-icon">⚽</div>
-      <div>
-        <div class="card-item-title">CEO & Founder — DerbyFTBL</div>
-        <div class="card-item-sub">733% profit growth · 16 club contracts</div>
-      </div>
-    </div>
+
+      <span class="badge">CFA Level 1 Candidate</span>
+    </aside>
+
+    <!-- ── MAIN ── -->
+    <main>
+
+      <!-- EXPERIENCE -->
+      <section id="experience">
+        <p class="section-label">Career</p>
+        <h2 class="section-title">Experience</h2>
+
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-date">May –<br>Aug 2026</div>
+            <div class="tl-body">
+              <p class="tl-org">NIC NBK · Astana, Kazakhstan</p>
+              <p class="tl-title">Alternative Investment Analyst Intern</p>
+              <ul class="tl-bullets">
+                <li>Conducted due diligence across private equity, infrastructure, and alternative asset classes for Kazakhstan's sovereign wealth fund.</li>
+                <li>Built DCF and LBO models to evaluate portfolio investments; prepared investment committee materials.</li>
+                <li>Drafted internal research notes on EM asset allocation and risk-adjusted return opportunities.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-date">Jun –<br>Aug 2025</div>
+            <div class="tl-body">
+              <p class="tl-org">Chevron Corporation</p>
+              <p class="tl-title">Accounting Intern</p>
+              <ul class="tl-bullets">
+                <li>Analyzed Power BI data across 5+ departments, identifying $150K+ in potential annual cost savings.</li>
+                <li>Supported month/quarter-end close for a $2B+ business unit in SAP; reduced reconciliation time by 15% via automation.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-date">2022 –<br>Present</div>
+            <div class="tl-body">
+              <p class="tl-org">DerbyFTBL · Atyrau</p>
+              <p class="tl-title">CEO &amp; Founder — Sports Retail</p>
+              <ul class="tl-bullets">
+                <li>Bootstrapped from $300 → $2,500 net profit in 6 months (733% growth); 40% gross margin via direct sourcing.</li>
+                <li>Secured contracts with 16 football clubs; opened physical store with 120% foot-traffic growth in Q1.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-date">Sep 2022 –<br>Apr 2024</div>
+            <div class="tl-body">
+              <p class="tl-org">RSPC Daryn Kazakhstan</p>
+              <p class="tl-title">Finance Research Team Member</p>
+              <ul class="tl-bullets">
+                <li>Led 5-person team to National Finalist 2023 &amp; 2024 out of 27,000 participants.</li>
+                <li>Presented corporate financial resilience research to 100+ business leaders and government officials.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects">
+        <p class="section-label">Research &amp; Work</p>
+        <h2 class="section-title">Projects</h2>
+
+        <div class="projects-grid">
+
+          <div class="project-card" onclick="window.open('KSPI_Investment_Memo.pdf')">
+            <p class="project-tag">Equity Research · DCF</p>
+            <p class="project-name">Kaspi.kz (KSPI) — Investment Memorandum</p>
+            <p class="project-desc">Full three-sheet valuation (DCF, Comps, WACC) of Kazakhstan's dominant fintech super-app listed on NASDAQ. BUY recommendation with $150–200 12-month target vs. ~$86 market price.</p>
+            <div class="project-stat">
+              <span class="stat-pill">DCF: $511 implied</span>
+              <span class="stat-pill">493% upside</span>
+              <span class="stat-pill">WACC 13.1%</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <p class="project-tag">Academic Research · Econometrics</p>
+            <p class="project-name">Import Competition &amp; Stock Market Impact</p>
+            <p class="project-desc">27-page thesis with Prof. William Lincoln at Claremont McKenna College (Pioneer Academics). Analysed how import competition shocks propagate into equity market valuations using causal inference and panel regression.</p>
+            <div class="project-stat">
+              <span class="stat-pill">Pioneer Academics</span>
+              <span class="stat-pill">2023</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <p class="project-tag">Portfolio Management</p>
+            <p class="project-name">Personal Investment Portfolio</p>
+            <p class="project-desc">Managed a $9,000 crypto &amp; equity portfolio over 18 months, achieving 55% ROI through value investing and sector rotation. Applied DCF, P/E, and P/B models for asset selection.</p>
+            <div class="project-stat">
+              <span class="stat-pill">55% ROI</span>
+              <span class="stat-pill">18 months</span>
+              <span class="stat-pill">Value investing</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <p class="project-tag">Club · Research Leadership</p>
+            <p class="project-name">CityU Investment Club — Macro Research</p>
+            <p class="project-desc">Founded club with 40+ members. Lead a 6-person team producing bi-weekly macro reports covering US/China interest rates, inflation, and equity sentiment — distributed to 850+ subscribers.</p>
+            <div class="project-stat">
+              <span class="stat-pill">40+ members</span>
+              <span class="stat-pill">850+ subscribers</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <p class="section-label">Toolbox</p>
+        <h2 class="section-title">Skills</h2>
+
+        <div class="skills-grid">
+          <div class="skill-group">
+            <p class="skill-group-label">Financial Modelling</p>
+            <div class="skill-tags">
+              <span class="skill-tag">DCF</span>
+              <span class="skill-tag">LBO</span>
+              <span class="skill-tag">Comps</span>
+              <span class="skill-tag">P/E · P/B</span>
+              <span class="skill-tag">EV/EBITDA</span>
+              <span class="skill-tag">WACC</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <p class="skill-group-label">Data &amp; Analytics</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Power BI</span>
+              <span class="skill-tag">SAP</span>
+              <span class="skill-tag">Excel (Macros)</span>
+              <span class="skill-tag">R</span>
+              <span class="skill-tag">SAS</span>
+              <span class="skill-tag">Bloomberg</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <p class="skill-group-label">Languages</p>
+            <div class="skill-tags">
+              <span class="skill-tag">English — Fluent</span>
+              <span class="skill-tag">Russian — Native</span>
+              <span class="skill-tag">Kazakh — Native</span>
+              <span class="skill-tag">Turkish — Fluent</span>
+              <span class="skill-tag">Mandarin — Basic</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <p class="skill-group-label">Core Competencies</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Investment Analysis</span>
+              <span class="skill-tag">Risk Assessment</span>
+              <span class="skill-tag">Financial Reporting</span>
+              <span class="skill-tag">Research Leadership</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education">
+        <p class="section-label">Academic</p>
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-date">2024 –<br>2028</div>
+            <div class="tl-body">
+              <p class="tl-org">City University of Hong Kong</p>
+              <p class="tl-title">BBA Finance — GPA 3.7/4.0 · Dean's List</p>
+              <ul class="tl-bullets">
+                <li>Top Entrance Scholarship: HK$200,000/year covering tuition, housing &amp; stipend.</li>
+                <li>Talent Development Scholarship: HK$10,000 for academic &amp; extracurricular excellence.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">Jan –<br>Aug 2023</div>
+            <div class="tl-body">
+              <p class="tl-org">Pioneer Academics (US) · Claremont McKenna College, CA</p>
+              <p class="tl-title">Research Scholar</p>
+              <ul class="tl-bullets">
+                <li>Thesis: "Impact of Import Competition on Stock Market" with Prof. William Lincoln.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AWARDS -->
+      <section id="awards">
+        <p class="section-label">Recognition</p>
+        <h2 class="section-title">Awards &amp; Certifications</h2>
+
+        <div class="awards-list">
+          <div class="award-row">
+            <div class="award-icon">★</div>
+            <div>
+              <p class="award-title">U.S. State Department FLEX Scholarship</p>
+              <p class="award-sub">US$45,000 · 2% acceptance rate · Full academic exchange programme</p>
+            </div>
+          </div>
+          <div class="award-row">
+            <div class="award-icon">◆</div>
+            <div>
+              <p class="award-title">Gold Medal — National Research Project (Economics)</p>
+              <p class="award-sub">RSPC Daryn Kazakhstan · National Finalist 2023 &amp; 2024 out of 27,000 participants</p>
+            </div>
+          </div>
+          <div class="award-row">
+            <div class="award-icon">◈</div>
+            <div>
+              <p class="award-title">CFA Level 1 Candidate</p>
+              <p class="award-sub">CFA Institute · Active candidate — Financial analysis, ethics, portfolio management</p>
+            </div>
+          </div>
+          <div class="award-row">
+            <div class="award-icon">✦</div>
+            <div>
+              <p class="award-title">Top Entrance Scholarship — City University of Hong Kong</p>
+              <p class="award-sub">HK$200,000/year · Talent Development Scholarship HK$10,000</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
   </div>
 </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-header">
-    <p class="section-num">01 — About</p>
-    <h2 class="section-title">The story <em>so far</em></h2>
-  </div>
-  <div class="about-grid">
-    <div class="about-bio">
-      <p>I'm a first-year Finance student at <strong>City University of Hong Kong</strong>, where I made the Dean's List with a 3.7 GPA and was awarded the Top Entrance Scholarship covering tuition, housing, and a living stipend.</p>
-      <p>Before university, I was selected as a <strong>U.S. State Department FLEX Scholar</strong> (2% acceptance rate) and conducted a 27-page research thesis at <strong>Claremont McKenna College</strong> on the impact of import competition on stock markets — work that sharpened my quantitative instincts for capital markets.</p>
-      <p>On the entrepreneurship side, I bootstrapped a sports retail business from <strong>$300 to $2,500 net profit</strong> in six months, secured contracts with 16 football clubs, and opened a physical store in Atyrau. I believe the best finance professionals combine analytical rigour with an operator's mindset.</p>
-      <p>Languages: <strong>English, Turkish, Russian, Kazakh</strong> (fluent) · Mandarin (basic).</p>
-    </div>
-    <div>
-      <div class="awards-list">
-        <div class="award-item">
-          <div class="award-title">U.S. State Department FLEX Scholarship</div>
-          <div class="award-detail">US$45,000 · 2% acceptance rate</div>
-        </div>
-        <div class="award-item">
-          <div class="award-title">Top Entrance Scholarship — CityU HK</div>
-          <div class="award-detail">HK$200,000/year · tuition + housing + stipend</div>
-        </div>
-        <div class="award-item">
-          <div class="award-title">Gold Medal — National Research Project</div>
-          <div class="award-detail">Economics category · Kazakhstan</div>
-        </div>
-        <div class="award-item">
-          <div class="award-title">National Finalist — RSPC Daryn</div>
-          <div class="award-detail">Top team out of 27,000 participants · 2023 & 2024</div>
-        </div>
-        <div class="award-item">
-          <div class="award-title">Talent Development Scholarship</div>
-          <div class="award-detail">HK$10,000 · academic & extracurricular</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-header">
-    <p class="section-num">02 — Experience</p>
-    <h2 class="section-title">Where I've <em>worked</em></h2>
-  </div>
-  <div class="exp-list">
-    <div class="exp-item">
-      <div class="exp-meta">
-        <div class="exp-company">Chevron Corporation</div>
-        <div class="exp-period">Jun 2025 – Aug 2025</div>
-      </div>
-      <div>
-        <div class="exp-role">Accounting <em>Intern</em></div>
-        <ul class="exp-bullets">
-          <li>Analyzed operational data using Power BI across 5+ departments, identifying $150K+ in potential annual cost savings through procurement and logistics efficiencies.</li>
-          <li>Supported month-end and quarter-end closing for a $2B+ business unit, ensuring 100% data accuracy in SAP.</li>
-          <li>Reduced reconciliation time by 15% through automation of manual Excel workflows.</li>
-        </ul>
-        <span class="exp-tag">Power BI</span>
-        <span class="exp-tag">SAP</span>
-        <span class="exp-tag">Excel Automation</span>
-        <span class="exp-tag">Financial Reporting</span>
-      </div>
-    </div>
-    <div class="exp-item">
-      <div class="exp-meta">
-        <div class="exp-company">CityU Investment Club</div>
-        <div class="exp-period">Apr 2026 – Present</div>
-      </div>
-      <div>
-        <div class="exp-role">Founder & Economic <em>Research Lead</em></div>
-        <ul class="exp-bullets">
-          <li>Founded the club with 40+ active members across finance, economics, and data science.</li>
-          <li>Lead a 6-person team producing a biweekly macro report covering US/China rates, inflation, and equity sentiment — 850+ subscribers.</li>
-        </ul>
-        <span class="exp-tag">Macro Research</span>
-        <span class="exp-tag">Leadership</span>
-        <span class="exp-tag">Equity Analysis</span>
-      </div>
-    </div>
-    <div class="exp-item">
-      <div class="exp-meta">
-        <div class="exp-company">DerbyFTBL</div>
-        <div class="exp-period">2022 – Present</div>
-      </div>
-      <div>
-        <div class="exp-role">CEO & <em>Founder</em></div>
-        <ul class="exp-bullets">
-          <li>Bootstrapped from US$300 to US$2,500 net profit in first 6 months — 733% growth, 40% gross margin.</li>
-          <li>Hired and trained 2 full-time employees; secured contracts with 16 football clubs.</li>
-          <li>Opened physical retail store in Atyrau; increased foot traffic 120% in Q1.</li>
-        </ul>
-        <span class="exp-tag">Entrepreneurship</span>
-        <span class="exp-tag">P&L Management</span>
-        <span class="exp-tag">Operations</span>
-      </div>
-    </div>
-    <div class="exp-item">
-      <div class="exp-meta">
-        <div class="exp-company">RSPC Daryn Kazakhstan</div>
-        <div class="exp-period">Sep 2022 – Apr 2024</div>
-      </div>
-      <div>
-        <div class="exp-role">Finance Research <em>Team Lead</em></div>
-        <ul class="exp-bullets">
-          <li>Led a 5-person team to National Finalist standing (2023 & 2024) out of 27,000 participants.</li>
-          <li>Presented research on corporate financial resilience to 100+ business leaders and government officials.</li>
-        </ul>
-        <span class="exp-tag">Research</span>
-        <span class="exp-tag">Public Speaking</span>
-        <span class="exp-tag">Financial Analysis</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- PORTFOLIO -->
-<section id="portfolio">
-  <div class="section-header">
-    <p class="section-num">03 — Portfolio</p>
-    <h2 class="section-title">Research & <em>Projects</em></h2>
-  </div>
-  <div class="portfolio-grid">
-    <a href="Prof. William Lincoln Research Paper.pdf" class="portfolio-card">
-      <span class="card-arrow">↗</span>
-      <div class="card-tag"><span class="tag-dot"></span>Academic Research</div>
-      <h3 class="card-title">Impact of Import Competition on Stock Markets</h3>
-      <p class="card-desc">27-page thesis conducted at Claremont McKenna College under Prof. William Lincoln. Explores how trade shocks propagate through equity markets.</p>
-      <div class="card-footer">
-        <span class="placeholder-badge">PDF</span>
-      </div>
-    </a>
-    <a href="#" class="portfolio-card">
-      <span class="card-arrow">↗</span>
-      <div class="card-tag"><span class="tag-dot"></span>Macro Report</div>
-      <h3 class="card-title">CityU Investment Club — Biweekly Macro Report</h3>
-      <p class="card-desc">Regular coverage of US & China interest rates, inflation trends, and equity market sentiment. 850+ subscribers across students and faculty.</p>
-   <div class="card-footer">
-        <span class="placeholder-badge">Link — Add latest report</span>
-  </div>
-</a>
-     <a href="KSPI_Valuation_Model.xlsx" class="portfolio-card">
-  <span class="card-arrow">↗</span>
-  <div class="card-tag"><span class="tag-dot"></span>Financial Model</div>
-  <h3 class="card-title">DCF & Comparable Company Analysis</h3>
-  <p class="card-desc">Add your financial modelling work here — DCF, P/E, P/B valuation models. Show recruiters your technical command of Excel and real-world valuation.</p>
-  <div class="card-footer">
-    <a href="KSPI_Valuation_Model.xlsx" class="placeholder-badge" onclick="event.stopPropagation()">DCF Model</a>
-    <a href="KSPI_Investment_Memo.pdf" class="placeholder-badge" onclick="event.stopPropagation()">Memo</a>
-  </div>
-</a>
-    <a href="#" class="portfolio-card">
-      <span class="card-arrow">↗</span>
-      <div class="card-tag"><span class="tag-dot"></span>Investment Case</div>
-      <h3 class="card-title">Crypto & Equity Portfolio — 55% ROI Case Study</h3>
-      <p class="card-desc">Managed a US$9,000 portfolio over 18 months using value investing and sector rotation strategies, achieving 55% return.</p>
-      <div class="card-footer">
-        <span class="placeholder-badge">Write-up coming soon</span>
-      </div>
-    </a>
-    <a href="#" class="portfolio-card">
-      <span class="card-arrow">↗</span>
-      <div class="card-tag"><span class="tag-dot"></span>National Research</div>
-      <h3 class="card-title">Corporate Financial Resilience — RSPC Daryn</h3>
-      <p class="card-desc">National finalist research on how Kazakhstani firms sustain financial health during macroeconomic stress. Presented to 100+ officials and executives.</p>
-      <div class="card-footer">
-        <span class="placeholder-badge">Add slides or paper</span>
-      </div>
-    </a>
-    <a href="#" class="portfolio-card">
-      <span class="card-arrow">↗</span>
-      <div class="card-tag"><span class="tag-dot"></span>Business Case</div>
-      <h3 class="card-title">DerbyFTBL — Entrepreneurship Story</h3>
-      <p class="card-desc">From $300 to $2,500 net profit in 6 months. A case study in bootstrapping, direct sourcing, contract negotiation, and retail expansion.</p>
-      <div class="card-footer">
-        <span class="placeholder-badge">Write-up coming soon</span>
-      </div>
-    </a>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SKILLS -->
-<section>
-  <div class="section-header">
-    <p class="section-num">04 — Skills</p>
-    <h2 class="section-title">Tools & <em>Capabilities</em></h2>
-  </div>
-  <div class="skills-grid">
-    <div class="skill-block">
-      <div class="skill-block-title">Financial Modelling</div>
-      <div class="skill-tags">
-        <span class="skill-tag">DCF</span>
-        <span class="skill-tag">P/E</span>
-        <span class="skill-tag">P/B</span>
-        <span class="skill-tag">Comparables</span>
-        <span class="skill-tag">Sector Rotation</span>
-      </div>
-    </div>
-    <div class="skill-block">
-      <div class="skill-block-title">Data & Analytics</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Power BI</span>
-        <span class="skill-tag">Excel</span>
-        <span class="skill-tag">Macros</span>
-        <span class="skill-tag">SAS</span>
-        <span class="skill-tag">R</span>
-        <span class="skill-tag">Access</span>
-      </div>
-    </div>
-    <div class="skill-block">
-      <div class="skill-block-title">Enterprise Systems</div>
-      <div class="skill-tags">
-        <span class="skill-tag">SAP</span>
-        <span class="skill-tag">ERP</span>
-        <span class="skill-tag">Financial Reporting</span>
-      </div>
-    </div>
-    <div class="skill-block">
-      <div class="skill-block-title">Languages</div>
-      <div class="skill-tags">
-        <span class="skill-tag">English</span>
-        <span class="skill-tag">Russian</span>
-        <span class="skill-tag">Kazakh</span>
-        <span class="skill-tag">Turkish</span>
-        <span class="skill-tag">Mandarin (Basic)</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-wrap">
-    <div>
-      <p class="section-num" style="color: rgba(248,246,241,0.5);">05 — Contact</p>
-      <h2 class="contact-heading">Let's <em>connect</em></h2>
-      <p class="contact-sub">Open to internships, research collaborations, and conversations about finance, markets, and entrepreneurship.</p>
-    </div>
-    <div class="contact-links">
-      <a href="mailto:batyrkuanyshev@gmail.com" class="contact-link">
-        <span class="contact-link-icon">✉</span>
-        <div>
-          <div class="contact-link-label">Email</div>
-          <div class="contact-link-val">batyrkuanyshev@gmail.com</div>
-        </div>
-      </a>
-      <a href="tel:+85244293267" class="contact-link">
-        <span class="contact-link-icon">☎</span>
-        <div>
-          <div class="contact-link-label">Phone</div>
-          <div class="contact-link-val">+852 4429 3267</div>
-        </div>
-      </a>
-      <a href="https://www.linkedin.com/in/batyrk/?locale=en-US" target="_blank" class="contact-link">
-        <span class="contact-link-icon">in</span>
-        <div>
-          <div class="contact-link-label">LinkedIn</div>
-          <div class="contact-link-val">Batyrkhan Kuanyshev</div>
-        </div>
-      </a>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
 
 <footer>
-  <p>© 2026 Batyrkhan Kuanyshev · Built with intention.</p>
+  © 2026 Kuanyshev Batyrkhan &nbsp;·&nbsp;
+  <a href="mailto:batyrkuanyshev@gmail.com">batyrkuanyshev@gmail.com</a>
 </footer>
 
 </body>
