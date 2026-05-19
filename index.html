@@ -93,22 +93,32 @@
   }
 
   .avatar-ring {
-    width: 110px; height: 110px;
-    border-radius: 50%;
-    border: 2px solid var(--gold);
-    padding: 3px;
-    margin-bottom: 1.2rem;
-  }
-  .avatar-inner {
-    width: 100%; height: 100%;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--paper2), var(--paper3));
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--serif);
-    font-size: 2.2rem;
-    color: var(--gold-dim);
-    letter-spacing: 0.02em;
-  }
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  padding: 3px;
+  margin-bottom: 1.2rem;
+  overflow: hidden;  /* ← ADD THIS */
+}
+
+.avatar-inner {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--paper2), var(--paper3));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.02em;
+}
+
+/* ADD THIS NEW RULE */
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
 
   .sidebar-name {
     font-family: var(--serif);
@@ -391,9 +401,9 @@
 
     <!-- ── SIDEBAR ── -->
     <aside>
-      <div class="avatar-ring">
-        <div class="avatar-inner">KB</div>
-      </div>
+     <div class="avatar-ring">
+  <img src="IMG_9971.jpg" alt="Batyrkhan Kuanyshev" class="avatar-img">
+</div>
 
       <h1 class="sidebar-name">Kuanyshev<br>Batyrkhan</h1>
       <p class="sidebar-tagline">Finance &amp; Investment</p>
