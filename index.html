@@ -4,698 +4,473 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content="Finance Portfolio of Kuanyshev Batyrkhan — CFA Candidate, BBA Finance at CityU Hong Kong"/>
-<meta property="og:title" content="Portfolio of Kuanyshev Batyrkhan"/>
-<meta property="og:type" content="website"/>
-<title>Portfolio — Kuanyshev Batyrkhan</title>
+<title>Portfolio of Kuanyshev Batyrkhan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --gold: #C9A84C;
-    --gold-light: #F0D98E;
-    --gold-dim: #8a6e2f;
-    --ink: #1a1814;
-    --ink2: #3d3a34;
-    --ink3: #6b6760;
-    --paper: #faf8f4;
-    --paper2: #f2ede4;
-    --paper3: #e8e1d4;
-    --rule: rgba(201,168,76,0.25);
-    --serif: 'DM Serif Display', Georgia, serif;
-    --sans: 'DM Sans', system-ui, sans-serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--sans);
-    background: var(--paper);
-    color: var(--ink);
-    font-size: 15px;
-    line-height: 1.7;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(250,248,244,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--rule);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 2.5rem;
-    height: 58px;
-  }
-  .nav-brand {
-    font-family: var(--serif);
-    font-size: 1.05rem;
-    color: var(--ink);
-    text-decoration: none;
-    letter-spacing: 0.02em;
-  }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink3);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-
-  /* ── HERO / SIDEBAR LAYOUT ── */
-  .shell {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  .layout {
-    display: grid;
-    grid-template-columns: 230px 1fr;
-    gap: 0;
-    padding-top: 58px;
-    min-height: 100vh;
-  }
-
-  /* ── SIDEBAR ── */
-  aside {
-    position: sticky;
-    top: 58px;
-    height: calc(100vh - 58px);
-    overflow-y: auto;
-    padding: 3rem 2rem 2rem 0;
-    border-right: 1px solid var(--rule);
-  }
-
-  .avatar-ring {
-  width: 110px; height: 110px;
-  border-radius: 50%;
-  border: 2px solid var(--gold);
-  padding: 3px;
-  margin-bottom: 1.2rem;
-  overflow: hidden;  /* ← ADD THIS */
+:root {
+  --black: #1a1a1a;
+  --gray1: #444;
+  --gray2: #666;
+  --gray3: #999;
+  --gray4: #ccc;
+  --gray5: #f4f4f4;
+  --white: #fff;
+  --link: #1a1a1a;
+  --font: 'Inter', -apple-system, sans-serif;
+  --sidebar: 260px;
 }
 
-.avatar-inner {
-  width: 100%; height: 100%;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--paper2), var(--paper3));
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif);
-  font-size: 2.2rem;
-  color: var(--gold-dim);
-  letter-spacing: 0.02em;
+html { font-size: 15px; scroll-behavior: smooth; }
+body { font-family: var(--font); color: var(--black); background: var(--white); line-height: 1.65; }
+
+a { color: var(--link); }
+a:hover { text-decoration: underline; }
+
+/* ── LAYOUT ── */
+.page {
+  display: grid;
+  grid-template-columns: var(--sidebar) 1fr;
+  min-height: 100vh;
 }
 
-/* ADD THIS NEW RULE */
-.avatar-img {
-  width: 100%;
-  height: 100%;
+/* ── SIDEBAR ── */
+aside {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 2.5rem 1.6rem 2rem;
+  border-right: 1px solid var(--gray4);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
   object-fit: cover;
-  border-radius: 50%;
+  border: 3px solid var(--gray4);
+  margin-bottom: 1rem;
 }
 
-  .sidebar-name {
-    font-family: var(--serif);
-    font-size: 1.25rem;
-    line-height: 1.3;
-    margin-bottom: 0.25rem;
-    color: var(--ink);
-  }
-  .sidebar-tagline {
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--gold-dim);
-    margin-bottom: 1.4rem;
-  }
+.name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+}
 
-  .sidebar-meta { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.6rem; }
-  .sidebar-meta li { font-size: 0.83rem; color: var(--ink3); display: flex; align-items: flex-start; gap: 0.5rem; }
-  .sidebar-meta li svg { flex-shrink: 0; margin-top: 3px; }
+.tagline {
+  font-size: 0.82rem;
+  color: var(--gray2);
+  margin-bottom: 1.2rem;
+}
 
-  .sidebar-links { display: flex; flex-direction: column; gap: 0.45rem; }
-  .sidebar-links a {
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--gold-dim);
-    text-decoration: none;
-    display: flex; align-items: center; gap: 0.4rem;
-    transition: color 0.2s;
-  }
-  .sidebar-links a:hover { color: var(--gold); }
+.divider {
+  border: none;
+  border-top: 1px solid var(--gray4);
+  margin: 1rem 0;
+}
 
-  .badge {
-    display: inline-block;
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 3px 10px;
-    border-radius: 20px;
-    border: 1px solid var(--gold);
-    color: var(--gold-dim);
-    margin-top: 1.2rem;
-  }
+.meta-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+.meta-list li {
+  font-size: 0.8rem;
+  color: var(--gray2);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.meta-list li svg { flex-shrink: 0; margin-top: 2px; }
 
-  /* ── MAIN ── */
-  main {
-    padding: 3rem 0 4rem 3rem;
-  }
+.sidebar-nav {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1.2rem;
+}
+.sidebar-nav a {
+  font-size: 0.82rem;
+  color: var(--gray1);
+  text-decoration: none;
+  display: block;
+  padding: 0.2rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s;
+}
+.sidebar-nav a:hover { color: var(--black); text-decoration: none; border-bottom-color: var(--black); }
 
-  /* section heading */
-  .section-label {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold-dim);
-    margin-bottom: 0.3rem;
-  }
-  .section-title {
-    font-family: var(--serif);
-    font-size: 1.6rem;
-    color: var(--ink);
-    margin-bottom: 1.8rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid var(--rule);
-  }
+.btn-resume {
+  display: block;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.55rem 1rem;
+  border: 1.5px solid var(--black);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--black);
+  transition: background 0.15s, color 0.15s;
+  margin-bottom: 1rem;
+}
+.btn-resume:hover { background: var(--black); color: var(--white); text-decoration: none; }
 
-  section { margin-bottom: 3.5rem; }
+.badge {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  border: 1px solid var(--gray3);
+  border-radius: 20px;
+  color: var(--gray2);
+  display: inline-block;
+}
 
-  /* ── EXPERIENCE TIMELINE ── */
-  .timeline { display: flex; flex-direction: column; gap: 1.6rem; }
-  .tl-item {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 0 1.2rem;
-  }
-  .tl-date {
-    font-size: 0.76rem;
-    font-weight: 500;
-    color: var(--ink3);
-    text-align: right;
-    padding-top: 3px;
-    line-height: 1.4;
-  }
-  .tl-body {
-    border-left: 2px solid var(--rule);
-    padding-left: 1.2rem;
-    position: relative;
-  }
-  .tl-body::before {
-    content: '';
-    position: absolute;
-    left: -5px; top: 7px;
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--gold);
-  }
-  .tl-org {
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--gold-dim);
-    margin-bottom: 0.15rem;
-  }
-  .tl-title {
-    font-family: var(--serif);
-    font-size: 1rem;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-  }
-  .tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
-  .tl-bullets li {
-    font-size: 0.86rem;
-    color: var(--ink2);
-    padding-left: 1.1rem;
-    position: relative;
-  }
-  .tl-bullets li::before {
-    content: '—';
-    position: absolute; left: 0;
-    color: var(--gold);
-    font-size: 0.8rem;
-  }
+/* ── MAIN ── */
+main {
+  padding: 3rem 3.5rem 4rem;
+  max-width: 720px;
+}
 
-  /* ── PROJECT CARDS ── */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.2rem;
-  }
-  .project-card {
-    background: var(--paper2);
-    border: 1px solid var(--paper3);
-    border-radius: 8px;
-    padding: 1.4rem 1.4rem 1.2rem;
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    transition: border-color 0.2s, transform 0.2s;
-    cursor: pointer;
-  }
-  .project-card:hover {
-    border-color: var(--gold);
-    transform: translateY(-2px);
-  }
-  .project-tag {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-    color: var(--gold-dim);
-  }
-  .project-name {
-    font-family: var(--serif);
-    font-size: 1.05rem;
-    color: var(--ink);
-    line-height: 1.35;
-  }
-  .project-desc {
-    font-size: 0.84rem;
-    color: var(--ink3);
-    line-height: 1.6;
-    flex: 1;
-  }
-  .project-stat {
-    display: flex; gap: 0.5rem; flex-wrap: wrap;
-  }
-  .stat-pill {
-    font-size: 0.72rem;
-    font-weight: 500;
-    padding: 2px 9px;
-    border-radius: 20px;
-    background: var(--paper3);
-    color: var(--ink2);
-  }
+/* section heading — matches Arman's clean style */
+h1.section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.6rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--black);
+}
 
-  /* ── SKILLS ── */
-  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-  .skill-group { }
-  .skill-group-label {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink3);
-    margin-bottom: 0.5rem;
-  }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .skill-tag {
-    font-size: 0.8rem;
-    padding: 3px 10px;
-    border-radius: 20px;
-    background: var(--paper2);
-    border: 1px solid var(--paper3);
-    color: var(--ink2);
-  }
+section { margin-bottom: 3.5rem; }
 
-  /* ── AWARDS ── */
-  .awards-list { display: flex; flex-direction: column; gap: 1rem; }
-  .award-row {
-    display: flex; gap: 1rem; align-items: flex-start;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--rule);
-  }
-  .award-row:last-child { border-bottom: none; padding-bottom: 0; }
-  .award-icon {
-    width: 34px; height: 34px;
-    border-radius: 50%;
-    background: var(--paper2);
-    border: 1px solid var(--gold);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    font-size: 0.85rem;
-    color: var(--gold-dim);
-  }
-  .award-title { font-weight: 500; font-size: 0.9rem; color: var(--ink); }
-  .award-sub { font-size: 0.8rem; color: var(--ink3); }
+/* ── PROJECTS ── */
+.project {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--gray5);
+}
+.project:last-child { border-bottom: none; margin-bottom: 0; }
 
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--rule);
-    padding: 1.8rem 2rem;
-    text-align: center;
-    font-size: 0.78rem;
-    color: var(--ink3);
-  }
-  footer a { color: var(--gold-dim); text-decoration: none; }
+.project-meta {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray3);
+  margin-bottom: 0.3rem;
+}
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 720px) {
-    .layout { grid-template-columns: 1fr; }
-    aside {
-      position: static; height: auto;
-      border-right: none; border-bottom: 1px solid var(--rule);
-      padding: 2.5rem 1rem 2rem;
-      display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start;
-    }
-    main { padding: 2rem 0; }
-    nav { padding: 0 1.2rem; }
-    .shell { padding: 0 1.2rem; }
-    .skills-grid { grid-template-columns: 1fr; }
-  }
+.project h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.35;
+}
 
-  /* ── ANIMATE ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
+.project p {
+  font-size: 0.875rem;
+  color: var(--gray1);
+  margin-bottom: 0.8rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.project-links a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--black);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-bottom: 1px solid var(--gray4);
+  padding-bottom: 1px;
+  transition: border-color 0.15s;
+}
+.project-links a:hover { border-color: var(--black); text-decoration: none; }
+
+.stats {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+}
+.stat {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 2px 9px;
+  background: var(--gray5);
+  border-radius: 20px;
+  color: var(--gray1);
+}
+
+/* ── ACHIEVEMENTS ── */
+.achievement {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1.4rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--gray5);
+}
+.achievement:last-child { border-bottom: none; margin-bottom: 0; }
+
+.ach-icon {
+  font-size: 1.1rem;
+  width: 32px;
+  flex-shrink: 0;
+  padding-top: 1px;
+  text-align: center;
+}
+
+.ach-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+.ach-sub {
+  font-size: 0.82rem;
+  color: var(--gray2);
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--gray4);
+  padding: 1.2rem 3.5rem;
+  font-size: 0.78rem;
+  color: var(--gray3);
+  grid-column: 1 / -1;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+  .page { grid-template-columns: 1fr; }
+  aside {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--gray4);
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.8rem 1.4rem;
   }
-  .tl-item, .project-card, .award-row, .skill-group {
-    animation: fadeUp 0.5s ease both;
-  }
-  .tl-item:nth-child(1) { animation-delay: 0.05s }
-  .tl-item:nth-child(2) { animation-delay: 0.12s }
-  .tl-item:nth-child(3) { animation-delay: 0.19s }
-  .tl-item:nth-child(4) { animation-delay: 0.26s }
-  .project-card:nth-child(1) { animation-delay: 0.07s }
-  .project-card:nth-child(2) { animation-delay: 0.14s }
-  .project-card:nth-child(3) { animation-delay: 0.21s }
+  .photo { width: 80px; height: 80px; }
+  main { padding: 2rem 1.4rem 3rem; }
+  footer { padding: 1rem 1.4rem; }
+}
 </style>
 </head>
 <body>
 
-<nav>
-  <a class="nav-brand" href="#">Kuanyshev Batyrkhan</a>
-  <ul class="nav-links">
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#awards">Awards</a></li>
-    <li><a href="Kuanyshev Batyrkhan_CV (1).pdf">Resume ↗</a></li>
-  </ul>
-</nav>
+<div class="page">
 
-<div class="shell">
-  <div class="layout">
+  <!-- ── SIDEBAR ── -->
+  <aside>
+    <img src="IMG_9971.jpg" alt="Kuanyshev Batyrkhan" class="photo" onerror="this.style.display='none'"/>
 
-    <!-- ── SIDEBAR ── -->
-    <aside>
-     <div class="avatar-ring">
-  <img src="IMG_9971.jpg" alt="Batyrkhan Kuanyshev" class="avatar-img">
-</div>
+    <p class="name">Kuanyshev Batyrkhan</p>
+    <p class="tagline">Finance Portfolio</p>
 
-      <h1 class="sidebar-name">Kuanyshev<br>Batyrkhan</h1>
-      <p class="sidebar-tagline">Finance &amp; Investment</p>
+    <hr class="divider"/>
 
-      <ul class="sidebar-meta">
-        <li>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          Hong Kong &amp; Atyrau, KZ
-        </li>
-        <li>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
-          batyrkuanyshev@gmail.com
-        </li>
-        <li>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
-          +852 4429 3267
-        </li>
-        <li>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          City University of Hong Kong
-        </li>
-      </ul>
+    <ul class="meta-list">
+      <li>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Hong Kong
+      </li>
+      <li>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+        batyrkuanyshev@gmail.com
+      </li>
+      <li>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        City University of Hong Kong
+      </li>
+    </ul>
 
-      <div class="sidebar-links">
-        <a href="https://linkedin.com/in/batyrkhan-kuanyshev" target="_blank">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          LinkedIn
-        </a>
-        <a href="mailto:batyrkuanyshev@gmail.com">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
-          Email me
-        </a>
-        <a href="Kuanyshev Batyrkhan_CV (1).pdf">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          Download CV
-        </a>
+    <ul class="sidebar-nav">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="https://linkedin.com/in/batyrkhan-kuanyshev" target="_blank">LinkedIn ↗</a></li>
+    </ul>
+
+    <a class="btn-resume" href="Kuanyshev_Batyrkhan_Resume_v2.docx" download>Download Resume</a>
+
+    <span class="badge">CFA Level 1 Candidate</span>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h1 class="section-title">Projects</h1>
+
+      <div class="project">
+        <p class="project-meta">Equity Research · DCF Valuation</p>
+        <h3>Kaspi.kz (KSPI) — Investment Memorandum</h3>
+        <p>
+          Full three-sheet valuation model (DCF, Comps, WACC) for Kazakhstan's dominant fintech super-app
+          listed on NASDAQ (~$15.4B market cap). DCF base case implies $511/share vs. current ~$86 — 493% upside.
+          12-month BUY target of $150–200 under conservative assumptions (WACC 13.1%, TGR 3%).
+          Modelled Payments (TPV >₸12T/quarter), Marketplace, and Fintech segments with full risk analysis.
+        </p>
+        <div class="stats">
+          <span class="stat">DCF: $511 implied</span>
+          <span class="stat">493% upside</span>
+          <span class="stat">WACC 13.1%</span>
+          <span class="stat">BUY — May 2026</span>
+        </div>
+        <div class="project-links">
+          <a href="KSPI_Investment_Memo.pdf" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Read memo (PDF)
+          </a>
+        </div>
       </div>
 
-      <span class="badge">CFA Level 1 Candidate</span>
-    </aside>
-
-    <!-- ── MAIN ── -->
-    <main>
-
-      <!-- EXPERIENCE -->
-      <section id="experience">
-        <p class="section-label">Career</p>
-        <h2 class="section-title">Experience</h2>
-
-        <div class="timeline">
-
-          <div class="tl-item">
-            <div class="tl-date">May –<br>Aug 2026</div>
-            <div class="tl-body">
-              <p class="tl-org">NIC NBK · Astana, Kazakhstan</p>
-              <p class="tl-title">Alternative Investment Analyst Intern</p>
-              <ul class="tl-bullets">
-                <li>Conducted due diligence across private equity, infrastructure, and alternative asset classes for Kazakhstan's sovereign wealth fund.</li>
-                <li>Built DCF and LBO models to evaluate portfolio investments; prepared investment committee materials.</li>
-                <li>Drafted internal research notes on EM asset allocation and risk-adjusted return opportunities.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-date">Jun –<br>Aug 2025</div>
-            <div class="tl-body">
-              <p class="tl-org">Chevron Corporation</p>
-              <p class="tl-title">Accounting Intern</p>
-              <ul class="tl-bullets">
-                <li>Analyzed Power BI data across 5+ departments, identifying $150K+ in potential annual cost savings.</li>
-                <li>Supported month/quarter-end close for a $2B+ business unit in SAP; reduced reconciliation time by 15% via automation.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-date">2022 –<br>Present</div>
-            <div class="tl-body">
-              <p class="tl-org">DerbyFTBL · Atyrau</p>
-              <p class="tl-title">CEO &amp; Founder — Sports Retail</p>
-              <ul class="tl-bullets">
-                <li>Bootstrapped from $300 → $2,500 net profit in 6 months (733% growth); 40% gross margin via direct sourcing.</li>
-                <li>Secured contracts with 16 football clubs; opened physical store with 120% foot-traffic growth in Q1.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-date">Sep 2022 –<br>Apr 2024</div>
-            <div class="tl-body">
-              <p class="tl-org">RSPC Daryn Kazakhstan</p>
-              <p class="tl-title">Finance Research Team Member</p>
-              <ul class="tl-bullets">
-                <li>Led 5-person team to National Finalist 2023 &amp; 2024 out of 27,000 participants.</li>
-                <li>Presented corporate financial resilience research to 100+ business leaders and government officials.</li>
-              </ul>
-            </div>
-          </div>
-
+      <div class="project">
+        <p class="project-meta">Econometrics · Academic Research</p>
+        <h3>Impact of Import Competition on Stock Market</h3>
+        <p>
+          27-page thesis supervised by Prof. William Lincoln at Claremont McKenna College (Pioneer Academics, US).
+          Analysed how import competition shocks propagate into equity market valuations using panel regression
+          and causal inference methods.
+        </p>
+        <div class="stats">
+          <span class="stat">Pioneer Academics</span>
+          <span class="stat">Claremont McKenna College</span>
+          <span class="stat">2023</span>
         </div>
-      </section>
-
-      <!-- PROJECTS -->
-      <section id="projects">
-        <p class="section-label">Research &amp; Work</p>
-        <h2 class="section-title">Projects</h2>
-
-        <div class="projects-grid">
-
-          <div class="project-card" onclick="window.open('KSPI_Investment_Memo.pdf')">
-            <p class="project-tag">Equity Research · DCF</p>
-            <p class="project-name">Kaspi.kz (KSPI) — Investment Memorandum</p>
-            <p class="project-desc">Full three-sheet valuation (DCF, Comps, WACC) of Kazakhstan's dominant fintech super-app listed on NASDAQ. BUY recommendation with $150–200 12-month target vs. ~$86 market price.</p>
-            <div class="project-stat">
-              <span class="stat-pill">Download .PDF</span>
-            </div>
-          </div>
-
-          <div class="project-card" onclick="window.open('Prof. William Lincoln Research Paper.pdf')">
-            <p class="project-tag">Academic Research · Econometrics</p>
-            <p class="project-name">Import Competition &amp; Stock Market Impact</p>
-            <p class="project-desc">27-page thesis with Prof. William Lincoln at Claremont McKenna College (Pioneer Academics). Analysed how import competition shocks propagate into equity market valuations using causal inference and panel regression.</p>
-            <div class="project-stat">
-              <span class="stat-pill">Download .PDF</span>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <p class="project-tag">Portfolio Management</p>
-            <p class="project-name">Personal Investment Portfolio</p>
-            <p class="project-desc">Managed a $9,000 crypto &amp; equity portfolio over 18 months, achieving 55% ROI through value investing and sector rotation. Applied DCF, P/E, and P/B models for asset selection.</p>
-            <div class="project-stat">
-              <span class="stat-pill">55% ROI</span>
-              <span class="stat-pill">18 months</span>
-              <span class="stat-pill">Value investing</span>
-            </div>
-          </div>
-
-          <div class="project-card" onclick="window.open('https://www.linkedin.com/company/cityu-investment-club/', '_blank')">
-            <p class="project-tag">Club · Research Leadership</p>
-            <p class="project-name">CityU Investment Club — Macro Research</p>
-            <p class="project-desc">Founded club with 40+ members. Lead a 6-person team producing bi-weekly macro reports covering US/China interest rates, inflation, and equity sentiment — distributed to 850+ subscribers.</p>
-            <div class="project-stat">
-              <span class="stat-pill">40+ members</span>
-              <span class="stat-pill">850+ subscribers</span>
-            </div>
-          </div>
-        
-         <div class="project-card" onclick="window.open('EF4822 Project.pdf')">
-            <p class="project-tag">Financial Econometrics</p>
-            <p class="project-name">Volatility Clustering and GARCH Modelling for Bitcoin</p>
-            <p class="project-desc">Applied GARCH(1,1) to 1,460 daily BTC returns (2021–2024); detected ARCH effects (p < 0.001), estimated α+β = 0.9990 persistence, and achieved superior fit over constant variance (AIC 4.94 vs. 5.19) with fat-tailed Student-t distribution.</p>
-            <div class="project-stat">
-              <span class="stat-pill">Download .PDF</span>
-            </div>
-          </div>
-
+      <div class="project-links">
+          <a href="Prof. William Lincoln Research Paper.pdf" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Read paper (PDF)
+          </a>
         </div>
-      </section>
+      </div>
 
-      <!-- SKILLS -->
-      <section id="skills">
-        <p class="section-label">Toolbox</p>
-        <h2 class="section-title">Skills</h2>
 
-        <div class="skills-grid">
-          <div class="skill-group">
-            <p class="skill-group-label">Financial Modelling</p>
-            <div class="skill-tags">
-              <span class="skill-tag">DCF</span>
-              <span class="skill-tag">LBO</span>
-              <span class="skill-tag">Comps</span>
-              <span class="skill-tag">P/E · P/B</span>
-              <span class="skill-tag">EV/EBITDA</span>
-              <span class="skill-tag">WACC</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <p class="skill-group-label">Data &amp; Analytics</p>
-            <div class="skill-tags">
-              <span class="skill-tag">Power BI</span>
-              <span class="skill-tag">SAP</span>
-              <span class="skill-tag">Excel (Macros)</span>
-              <span class="skill-tag">R</span>
-              <span class="skill-tag">SAS</span>
-              <span class="skill-tag">Bloomberg</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <p class="skill-group-label">Languages</p>
-            <div class="skill-tags">
-              <span class="skill-tag">English — Fluent</span>
-              <span class="skill-tag">Russian — Native</span>
-              <span class="skill-tag">Kazakh — Native</span>
-              <span class="skill-tag">Turkish — Fluent</span>
-              <span class="skill-tag">Mandarin — Basic</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <p class="skill-group-label">Core Competencies</p>
-            <div class="skill-tags">
-              <span class="skill-tag">Investment Analysis</span>
-              <span class="skill-tag">Risk Assessment</span>
-              <span class="skill-tag">Financial Reporting</span>
-              <span class="skill-tag">Research Leadership</span>
-            </div>
-          </div>
+      <div class="project">
+        <p class="project-meta">Quantitative Finance · Time Series</p>
+        <h3>Volatility Clustering & GARCH Modelling for Bitcoin</h3>
+        <p>
+          Applied GARCH(1,1) to 1,460 daily BTC returns (2021–2024). Detected ARCH effects (p &lt; 0.001),
+          estimated α+β = 0.9990 volatility persistence, and achieved superior model fit over constant-variance
+          baseline (AIC 4.94 vs. 5.19) using Student-t distribution.
+        </p>
+        <div class="stats">
+          <span class="stat">GARCH(1,1)</span>
+          <span class="stat">1,460 observations</span>
+          <span class="stat">R</span>
         </div>
-      </section>
+      </div>
 
-      <!-- EDUCATION -->
-      <section id="education">
-        <p class="section-label">Academic</p>
-        <h2 class="section-title">Education</h2>
-        <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-date">2024 –<br>2028</div>
-            <div class="tl-body">
-              <p class="tl-org">City University of Hong Kong</p>
-              <p class="tl-title">BBA Finance — GPA 3.8/4.0 · Dean's List</p>
-              <ul class="tl-bullets">
-                <li>Top Entrance Scholarship: HK$200,000/year covering tuition, housing &amp; stipend.</li>
-                <li>Talent Development Scholarship: HK$10,000 for academic &amp; extracurricular excellence.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-date">Jan –<br>Aug 2023</div>
-            <div class="tl-body">
-              <p class="tl-org">Pioneer Academics (US) · Claremont McKenna College, CA</p>
-              <p class="tl-title">Research Scholar</p>
-              <ul class="tl-bullets">
-                <li>Thesis: "Impact of Import Competition on Stock Market" with Prof. William Lincoln.</li>
-              </ul>
-            </div>
-          </div>
+      <div class="project">
+        <p class="project-meta">Portfolio Management</p>
+        <h3>Personal Investment Portfolio — $9,000</h3>
+        <p>
+          Managed a live crypto &amp; equity portfolio over 18 months, achieving 55% ROI through value investing
+          and sector rotation. Used DCF, P/E, and P/B valuation to guide asset selection.
+        </p>
+        <div class="stats">
+          <span class="stat">55% ROI</span>
+          <span class="stat">18 months</span>
+          <span class="stat">Value investing</span>
         </div>
-      </section>
+      </div>
 
-      <!-- AWARDS -->
-      <section id="awards">
-        <p class="section-label">Recognition</p>
-        <h2 class="section-title">Awards &amp; Certifications</h2>
-
-        <div class="awards-list">
-          <div class="award-row">
-            <div class="award-icon">★</div>
-            <div>
-              <p class="award-title">U.S. State Department FLEX Scholarship</p>
-              <p class="award-sub">US$45,000 · 2% acceptance rate · Full academic exchange programme</p>
-            </div>
-          </div>
-          <div class="award-row">
-            <div class="award-icon">◆</div>
-            <div>
-              <p class="award-title">Gold Medal — National Research Project (Economics)</p>
-              <p class="award-sub">RSPC Daryn Kazakhstan · National Finalist 2023 &amp; 2024 out of 27,000 participants</p>
-            </div>
-          </div>
-         <div class="award-row">
-            <div class="award-icon">◆</div>
-            <div>
-              <p class="award-title">Gold Medal, National Chemistry Olympiad</p>
-              <p class="award-sub">Ministry of Education of Republic Kazakhstan · Gold Medal out of 1,200 participants</p>
-            </div>
-          </div>
-          <div class="award-row">
-            <div class="award-icon">◈</div>
-            <div>
-              <p class="award-title">CFA Level 1 Candidate</p>
-              <p class="award-sub">CFA Institute · Active candidate — Financial analysis, ethics, portfolio management</p>
-            </div>
-          </div>
-          <div class="award-row">
-            <div class="award-icon">✦</div>
-            <div>
-              <p class="award-title">Top Entrance Scholarship — City University of Hong Kong</p>
-              <p class="award-sub">HK$200,000/year · Talent Development Scholarship HK$10,000</p>
-            </div>
-          </div>
+      <div class="project">
+        <p class="project-meta">Research Leadership · CityU</p>
+        <h3>CityU Investment Club — Macro Research Reports</h3>
+        <p>
+          Founded the club with 40+ active members. Lead a 6-person team producing bi-weekly macro
+          reports covering US/China interest rates, inflation trends, and equity market sentiment.
+          Reports distributed to 850+ subscribers across students and faculty.
+        </p>
+        <div class="stats">
+          <span class="stat">Founder</span>
+          <span class="stat">850+ subscribers</span>
+          <span class="stat">Apr 2026 – present</span>
         </div>
-      </section>
+      </div>
 
-    </main>
-  </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements">
+      <h1 class="section-title">Achievements</h1>
+
+      <div class="achievement">
+        <div class="ach-icon">★</div>
+        <div>
+          <p class="ach-title">U.S. State Department FLEX Scholarship</p>
+          <p class="ach-sub">US$45,000 · 2% acceptance rate · Full academic exchange programme</p>
+        </div>
+      </div>
+
+      <div class="achievement">
+        <div class="ach-icon">🥇</div>
+        <div>
+          <p class="ach-title">Gold Medal — National Research Project (Economics)</p>
+          <p class="ach-sub">RSPC Daryn Kazakhstan · National Finalist 2023 & 2024 out of 27,000 participants</p>
+        </div>
+      </div>
+
+      <div class="achievement">
+        <div class="ach-icon">🥇</div>
+        <div>
+          <p class="ach-title">Gold Medal — National Chemistry Olympiad</p>
+          <p class="ach-sub">Ministry of Education, Republic of Kazakhstan · Gold Medal out of 1,200 participants</p>
+        </div>
+      </div>
+
+      <div class="achievement">
+        <div class="ach-icon">◈</div>
+        <div>
+          <p class="ach-title">CFA Level 1 Candidate</p>
+          <p class="ach-sub">CFA Institute · Financial analysis, ethics, portfolio management</p>
+        </div>
+      </div>
+
+      <div class="achievement">
+        <div class="ach-icon">✦</div>
+        <div>
+          <p class="ach-title">Top Entrance Scholarship — City University of Hong Kong</p>
+          <p class="ach-sub">HK$200,000/year covering tuition, housing & stipend · Dean's List · GPA 3.8/4.0</p>
+        </div>
+      </div>
+
+      <div class="achievement">
+        <div class="ach-icon">◆</div>
+        <div>
+          <p class="ach-title">Talent Development Scholarship — City University of Hong Kong</p>
+          <p class="ach-sub">HK$10,000 for academic performance & extracurricular engagement</p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>© 2026 Kuanyshev Batyrkhan &nbsp;·&nbsp; batyrkuanyshev@gmail.com</footer>
+
 </div>
-
-<footer>
-  © 2026 Kuanyshev Batyrkhan &nbsp;·&nbsp;
-  <a href="mailto:batyrkuanyshev@gmail.com">batyrkuanyshev@gmail.com</a>
-</footer>
-
 </body>
 </html>
