@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -247,6 +248,96 @@ section { margin-bottom: 3.5rem; }
   color: var(--gray2);
 }
 
+/* ── PORTFOLIO DETAILS PANEL ── */
+.btn-portfolio {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--black);
+  background: none;
+  border: 1px solid var(--gray4);
+  border-radius: 4px;
+  padding: 5px 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: border-color 0.15s, background 0.15s;
+  margin-top: 0.6rem;
+  font-family: var(--font);
+}
+.btn-portfolio:hover { border-color: var(--black); background: var(--gray5); }
+
+.portfolio-panel {
+  display: none;
+  margin-top: 1.4rem;
+  padding: 1.4rem;
+  background: var(--gray5);
+  border-radius: 6px;
+  border: 1px solid var(--gray4);
+}
+.portfolio-panel.open { display: block; }
+
+.portfolio-panel h4 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gray3);
+  margin-bottom: 1rem;
+}
+
+.charts-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.chart-block { }
+.chart-block canvas { max-height: 220px; }
+
+.donut-wrap {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.legend {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 1rem;
+}
+.legend li {
+  font-size: 0.78rem;
+  color: var(--gray1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.legend-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.portfolio-summary {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.4rem;
+  flex-wrap: wrap;
+}
+.ps-item { }
+.ps-label { font-size: 0.72rem; color: var(--gray3); text-transform: uppercase; letter-spacing: .05em; }
+.ps-value { font-size: 1rem; font-weight: 600; }
+.ps-value.green { color: #2d7a3a; }
+
+@media (max-width: 680px) {
+  .charts-row { grid-template-columns: 1fr; }
+  .donut-wrap { width: 160px; height: 160px; margin: 0 auto; }
+}
+
 /* ── FOOTER ── */
 footer {
   border-top: 1px solid var(--gray4);
@@ -432,6 +523,56 @@ footer {
           <span class="stat">18 months</span>
           <span class="stat">Value investing</span>
         </div>
+
+        <button class="btn-portfolio" onclick="togglePortfolio(this)">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          View Portfolio Details
+        </button>
+
+        <div class="portfolio-panel" id="portfolio-panel">
+
+          <div class="portfolio-summary">
+            <div class="ps-item">
+              <div class="ps-label">Invested</div>
+              <div class="ps-value">$8,974</div>
+            </div>
+            <div class="ps-item">
+              <div class="ps-label">Current Value</div>
+              <div class="ps-value green">~$13,960</div>
+            </div>
+            <div class="ps-item">
+              <div class="ps-label">Total Return</div>
+              <div class="ps-value green">+$4,986 (+55%)</div>
+            </div>
+            <div class="ps-item">
+              <div class="ps-label">Best Position</div>
+              <div class="ps-value green">ETH +1,150%</div>
+            </div>
+          </div>
+
+          <div class="charts-row">
+            <!-- Donut -->
+            <div>
+              <h4>Current Allocation</h4>
+              <div class="donut-wrap">
+                <canvas id="donutChart"></canvas>
+              </div>
+              <ul class="legend">
+                <li><span class="legend-dot" style="background:#627EEA"></span>ETH 30% · $4,185</li>
+                <li><span class="legend-dot" style="background:#CC0000"></span>VOO 40% · $5,580</li>
+                <li><span class="legend-dot" style="background:#003B6F"></span>DAL 23% · $3,210</li>
+                <li><span class="legend-dot" style="background:#E31937"></span>TSLA 7% · $977</li>
+              </ul>
+            </div>
+
+            <!-- Line chart -->
+            <div class="chart-block">
+              <h4>Portfolio Value Over Time</h4>
+              <canvas id="lineChart"></canvas>
+            </div>
+          </div>
+
+        </div>
       </div>
 
       <div class="project">
@@ -510,5 +651,97 @@ footer {
   <footer>© 2026 Kuanyshev Batyrkhan &nbsp;·&nbsp; batyrkuanyshev@gmail.com</footer>
 
 </div>
+<script>
+let chartsInit = false;
+
+function togglePortfolio(btn) {
+  const panel = document.getElementById('portfolio-panel');
+  const open = panel.classList.toggle('open');
+  btn.innerHTML = open
+    ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Hide Portfolio Details'
+    : '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> View Portfolio Details';
+  if (open && !chartsInit) { initCharts(); chartsInit = true; }
+}
+
+function initCharts() {
+  // ── DONUT: current allocation ──
+  new Chart(document.getElementById('donutChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['ETH', 'VOO', 'DAL', 'TSLA'],
+      datasets: [{
+        data: [30, 40, 23, 7],
+        backgroundColor: ['#627EEA', '#CC0000', '#003B6F', '#E31937'],
+        borderWidth: 2,
+        borderColor: '#f4f4f4',
+        hoverOffset: 6,
+      }]
+    },
+    options: {
+      cutout: '68%',
+      plugins: { legend: { display: false }, tooltip: {
+        callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed}%` }
+      }},
+    }
+  });
+
+  // ── LINE: portfolio value over time ──
+  // Key milestones (approximate based on historical prices)
+  const labels = ['Oct 2018','Jan 2021','Nov 2021','Jun 2022','Apr 2023','Jan 2024','Sep 2024','Jun 2025'];
+  const values = [335, 1256, 8875, 2813, 5994, 7248, 12960, 13960];
+  // Annotations for when positions were added
+  const events = {
+    'Oct 2018': 'Bought ETH @ $200',
+    'Nov 2021': 'Bought TSLA @ $383',
+    'Apr 2023': 'Bought DAL @ $34',
+    'Sep 2024': 'Bought VOO @ $495',
+  };
+
+  new Chart(document.getElementById('lineChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        data: values,
+        borderColor: '#1a1a1a',
+        borderWidth: 2,
+        backgroundColor: 'rgba(26,26,26,0.06)',
+        fill: true,
+        tension: 0.35,
+        pointRadius: ctx => events[labels[ctx.dataIndex]] ? 5 : 3,
+        pointBackgroundColor: ctx => events[labels[ctx.dataIndex]] ? '#1a1a1a' : '#999',
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` $${ctx.parsed.y.toLocaleString()}`,
+            afterLabel: ctx => events[labels[ctx.dataIndex]] ? `  ↳ ${events[labels[ctx.dataIndex]]}` : '',
+          }
+        }
+      },
+      scales: {
+        y: {
+          ticks: {
+            callback: v => '$' + v.toLocaleString(),
+            font: { size: 11 },
+            color: '#999',
+          },
+          grid: { color: 'rgba(0,0,0,0.05)' },
+        },
+        x: {
+          ticks: { font: { size: 10 }, color: '#999' },
+          grid: { display: false },
+        }
+      }
+    }
+  });
+}
+</script>
 </body>
 </html>
