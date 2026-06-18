@@ -21,7 +21,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 /* ── DARK MODE ── */
 [data-theme="dark"] {
@@ -357,8 +356,20 @@ section { margin-bottom: 3.5rem; }
   margin-bottom: 2rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid var(--gray5);
+  border-left: 3px solid transparent;
+  padding-left: 0.75rem;
+  margin-left: -0.75rem;
+  transition: border-left-color 0.2s, transform 0.2s;
 }
+.project:hover { border-left-color: var(--black); transform: translateX(4px); }
 .project:last-child { border-bottom: none; margin-bottom: 0; }
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
 
 .project-meta {
   font-size: 0.75rem;
@@ -964,7 +975,16 @@ function togglePortfolio(btn) {
   btn.innerHTML = open
     ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Hide Portfolio Details'
     : '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> View Portfolio Details';
-  if (open && !chartsInit) { initCharts(); chartsInit = true; }
+  if (open && !chartsInit) {
+    if (typeof Chart === 'undefined') {
+      const s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
+      s.onload = () => { initCharts(); chartsInit = true; };
+      document.head.appendChild(s);
+    } else {
+      initCharts(); chartsInit = true;
+    }
+  }
 }
 
 let donutChart = null, lineChart = null;
@@ -1068,6 +1088,16 @@ function updateChartTheme() {
   lineChart.options.scales.x.ticks.color = c.tick;
   lineChart.update();
 }
+
+// ── FADE-IN ON SCROLL ──
+document.querySelectorAll('.project, .achievement, .skill-group').forEach((el, i) => {
+  el.classList.add('fade-in');
+  el.style.transitionDelay = (i % 4) * 80 + 'ms';
+});
+const fadeObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeObserver.unobserve(e.target); } });
+}, { rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
 
 // ── ACTIVE NAV HIGHLIGHT ──
 const navLinks = document.querySelectorAll('.sidebar-nav a[href^="#"]');
