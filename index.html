@@ -1293,15 +1293,27 @@ sections.forEach(s => observer.observe(s));
 
   async function loadKZT() {
     try {
-      // 30-day history
-      const end = new Date(); end.setDate(end.getDate() - 1);
-      const start = new Date(end); start.setDate(start.getDate() - 30);
+      // Build last 12 date strings (every ~2.5 days over 30 days)
       const fmt = d => d.toISOString().slice(0,10);
+      const today = new Date(); today.setDate(today.getDate() - 1);
+      const datePoints = [];
+      for (let i = 29; i >= 0; i -= 2) {
+        const d = new Date(today); d.setDate(d.getDate() - i);
+        datePoints.push(fmt(d));
+      }
+      // Fetch current rate + history in parallel
+      const fetches = datePoints.map(date =>
+        fetch(`https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@${date}/v1/currencies/usd.min.json`)
+          .then(r => r.json())
+          .then(d => ({ date, rate: d.usd?.kzt }))
+          .catch(() => ({ date, rate: null }))
+      );
+      const results = await Promise.all(fetches);
+      const valid = results.filter(r => r.rate);
+      if (!valid.length) throw new Error('no data');
 
-      const res = await fetch(`https://api.frankfurter.app/${fmt(start)}..${fmt(end)}?from=USD&to=KZT`);
-      const data = await res.json();
-      const dates = Object.keys(data.rates).sort();
-      const rates = dates.map(d => data.rates[d].KZT);
+      const dates = valid.map(r => r.date.slice(5));
+      const rates = valid.map(r => r.rate);
 
       const latest = rates[rates.length - 1];
       const prev = rates[rates.length - 2];
@@ -1316,16 +1328,16 @@ sections.forEach(s => observer.observe(s));
         dir
       );
 
-      document.getElementById('chart-updated').textContent = 'Updated ' + dates[dates.length-1];
+      document.getElementById('chart-updated').textContent = 'Updated ' + valid[valid.length-1].date;
 
       // load Chart.js if needed then render
       if (typeof Chart === 'undefined') {
         const s = document.createElement('script');
         s.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
-        s.onload = () => renderKazChart(dates.map(d => d.slice(5)), rates);
+        s.onload = () => renderKazChart(dates, rates);
         document.head.appendChild(s);
       } else {
-        renderKazChart(dates.map(d => d.slice(5)), rates);
+        renderKazChart(dates, rates);
       }
     } catch(e) {
       document.getElementById('val-kzt').textContent = 'N/A';
